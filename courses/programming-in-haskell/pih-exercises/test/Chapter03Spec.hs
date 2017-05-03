@@ -33,20 +33,29 @@ spec = do
 
   describe "Exercise 2" $ do
 
-    it "implements function second" $ property $ \xs ->
-      1 < length xs ==> second xs === (head (tail xs) :: [String])
+    it "implements function second" $ do
+      second [1,2,3,4] `shouldBe` 2
+      -- | intentionally not testing second [] and second [1] as it is not specified
 
-    it "implements function swap" $ property $ \x y ->
-      swap (x, y) === ((y, x) :: ([Bool], String))
+    it "implements function swap" $ do
+      swap (0,0) `shouldBe` (0,0)
+      swap ((1,2)::(Int,Int)) `shouldBe` (2,1)
+      swap (1,'a') `shouldBe` ('a','1')
 
-    it "implements function pair" $ property $ \x y ->
-      pair x y === ((x, y) :: (Char, Int))
+    it "implements function pair" $ do
+      pair 0 0 `shouldBe` (0,0)
+      pair 1 2 `shouldBe` (1,2)
+      pair 1 'a' `shouldBe` (1,'a')
 
-    it "implements function double" $ property $ \x ->
-      double x === 2.0 * (x :: Double)
+    it "implements function double" $ do
+      double 0 `shouldBe` 0
+      double 3.14 `shouldBe` 6.28
+      double (-2.54) `shouldBe` (-5.08)
 
-    it "implements function palindrome" $ property $ \xs ->
-      palindrome xs === (reverse xs == (xs :: [Int]))
+    it "implements function palindrome" $ do
+      palindrome [] `shouldBe` True
+      palindrome "parterretrapje" `shouldBe` True
+      palindrome "parterretrap" `shouldBe` True
 
     it "implements function twice" $ do
       twice (+3) 8 `shouldBe` (8 + 3 + 3)
