@@ -40,7 +40,7 @@ spec = do
     it "implements function swap" $ do
       swap (0,0) `shouldBe` (0,0)
       swap ((1,2)::(Int,Int)) `shouldBe` (2,1)
-      swap (1,'a') `shouldBe` ('a','1')
+      swap (1,'a') `shouldBe` ('a',1)
 
     it "implements function pair" $ do
       pair 0 0 `shouldBe` (0,0)
@@ -53,8 +53,8 @@ spec = do
       double (-2.54) `shouldBe` (-5.08)
 
     it "implements function palindrome" $ do
-      palindrome [] `shouldBe` True
-      palindrome "parterretrapje" `shouldBe` True
+      palindrome ([]::[Int]) `shouldBe` True
+      palindrome "parterretrapje" `shouldBe` False
       palindrome "parterretrap" `shouldBe` True
 
     it "implements function twice" $ do
