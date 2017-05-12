@@ -29,12 +29,10 @@ data Tree a = Leaf a
             | Node (Tree a) a (Tree a)
 
 complete :: Tree a -> Bool
-complete t = f t > 0
-
--- f t := 0 iff 't is incomplete' && 'size of t' iff 't is complete'
-f :: Tree a -> Int
-f (Leaf l) = 1
-f (Node tl l tr)
+complete t = f t > 0 where
+    -- f t := 0 iff 't is incomplete' && 'size of t' iff 't is complete'
+    f (Leaf l) = 1
+    f (Node tl l tr)
         | fl == 0 = 0
         | fr == 0 = 0
         | fl /= fr = 0
